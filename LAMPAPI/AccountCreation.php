@@ -17,7 +17,7 @@
   {
     $stmt = $connection->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?, ?, ?, ?)");
     $stmt->bind_param("ssss", $firstName, $lastName, $userName, $passWord);
-    echo 'prepared and bound';
+
     if($stmt->execute()){
       echo 'executed';
     } else{
@@ -26,7 +26,6 @@
     
     $stmt->close();
     $connection->close();
-    returnWithError("");
   }
 
   function sendResultInfoAsJson($obj)
