@@ -2,69 +2,154 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background: rgb(22, 21, 21);
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('images/colortest.png') no-repeat;
+}
+
+.loginDiv {
+    position: relative;
+    width: 450px;
+    height: 500px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerDiv {
+    position: relative;
+    width: 550px;
+    height: 800px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editDiv {
+    position: relative;
+    width: 470px;
+    height: 650px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newDiv {
+    position: relative;
+    width: 470px;
+    height: 585px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginDiv .loginBox, .registerDiv .registerBox, .editDiv .editBox, .newDiv .newBox {
+    width: 100%;
+    padding: 50px;
+}
+
+.loginBox h2, .registerBox h2, .editDiv h2, .newDiv h2 {
+    font-size: 2em;
     color: white;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.loginDiv, .registerDiv {
-    margin: auto;
-    width: 630px;
-    max-width: 90%;
+.inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 45px;
+    border-bottom: 2px solid white;
 }
 
-.loginDiv form, .registerDiv form {
+.inputBox label {
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    font-size: .9em;
+    color: white;
+    font-weight: 600;
+    pointer-events: none;
+    transition: .7s;
+}
+
+.inputBox input:focus~label, .inputBox input:valid~label {
+    top: -5px;
+}
+
+.inputBox input {
     width: 100%;
     height: 100%;
-    padding: 20px;
-    background: rgb(27, 30, 54);
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0,0,0,.3);
-}
-
-.loginDiv form .title, .registerDiv form .title {
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-.loginDiv form .inputField, .registerDiv form .inputField {
-    width: 100%;
-    height: 40px;
-    background: white;
-    border-radius: 4px;
-    border: 1px solid silver;
-    margin: 10px 0 18px 0;
-    padding: 0 10px;
-    color: black;
-}
-
-.loginDiv form .submits, .registerDiv form .submits {
-    margin: 10px 0 0 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 34px;
+    background: transparent;
     border: none;
     outline: none;
-    background: green;
-    cursor: pointer;
-    font-size: 15px;
+    font-size: 1em;
     color: white;
-    border-radius: 4px;
+    font-weight: 250;
+    padding: 0 35px 0 5px;
 }
 
-.loginDiv form .submits:hover, .registerDiv form .submits:hover {
+.button {
+    width: 100%;
+    height: 45px;
+    background: rgb(25, 25, 34);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.button:hover {
     opacity: .7;
 }
 
-.loginDiv form .addPrompt, .registerDiv form .addPrompt {
-    width: 100%;
-    height: 40px;
-    border-radius: 4px;
-    margin: 50px 0 18px 0;
-    padding: 0 10px;
+.registerPrompt, .loginPrompt {
+    font-size: .9em;
+    color: white;
     text-align: center;
+    font-weight: 500;
+    margin: 15px 0 10px;
+}
+
+.registerPrompt p a, .loginPrompt p a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.registerPrompt p a:hover, .loginPrompt p a:hover {
+    text-decoration: underline;
 }

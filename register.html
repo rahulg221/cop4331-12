@@ -10,32 +10,40 @@
 </head>
 <body>
     <div class="registerDiv">
-        <form action="">
-            <h1 class="title">COP4331 Contact Manager</h1>
-            <h2 class="title">REGISTER</h2>
-            <div class="firstName">
-                <label for="">First Name</label>
-                <input type="text", class="inputField"/><br/>
-            </div>
-            <div class="lastName">
-                <label for="">Last Name</label>
-                <input type="text", class="inputField"/><br/>
-            </div>
-            <div class="email">
-                <label for="">Email</label>
-                <input type="email", class="inputField"/><br/>
-            </div>
-            <div class="user">
-                <label for="">Username</label>
-                <input type="text", class="inputField"/><br/>
-            </div>
-            <div class="pass">
-                <label for="">Password</label>
-                <input type="password", class="inputField"/><br/>
-            </div>
-            <input type="submit", class="submits", value="Create Account">
-            <p class="addPrompt">Already have an account? <a href="index.html">Log in</a></p>
-        </form>
+        <div class="registerBox">
+            <h2>Register</h2>
+            <form action="#">
+                <div class="inputBox">
+                    <!-- <span class="icon"></span> -->
+                    <input type="text" required>
+                    <label>First Name</label>
+                </div>
+                <div class="inputBox">
+                    <!-- <span class="icon"></span> -->
+                    <input type="text" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="inputBox">
+                    <!-- <span class="icon"></span> -->
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="inputBox">
+                    <!-- <span class="icon"></span> -->
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <!-- <span class="icon"></span> -->
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit", class="button">Create Account</button>
+                <div class="loginPrompt">
+                    <p>Already have an account? <a href="index.html" class="loginLink">Log In</a></p>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
