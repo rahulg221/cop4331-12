@@ -18,8 +18,12 @@
     $stmt = $connection->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?, ?, ?, ?)");
     $stmt->bind_param("ssss", $firstName, $lastName, $userName, $passWord);
     echo 'prepared and bound';
-    $stmt->execute();
-    echo 'executed';
+    if($stmt->execute()){
+      echo 'executed';
+    } else{
+      echo 'dont work';
+    }
+    
     $stmt->close();
     $connection->close();
     returnWithError("");
