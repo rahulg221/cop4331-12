@@ -1,5 +1,4 @@
 <?php
-
 	$inData = getRequestInfo();
 
 	$searchResults = "";
@@ -10,23 +9,22 @@
 	{
 		returnWithError( $connection->connect_error );
 	}
-  else
+	else
 	{
-		$stmt = $conn->prepare("select Name from Contacts where Name like ? and UserID=?");
+		$stmt = $connection->prepare("select firstName, lastName, email from Contacts where (firstName like ? or lastName like ? or email like ?) and UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("ss", $contactName, $inData["userId"]);
+		$stmt->bind_param("ssss", $contactName, $contactName, $contactName, $inData["userId"]);
 		$stmt->execute();
-
 		$result = $stmt->get_result();
 
-    while($row = $result->fetch_assoc())
+		while($row = $result->fetch_assoc())
 		{
 			if( $searchCount > 0 )
 			{
 				$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '"' . $row["Name"] . '"';
+			$searchResults .= '{"firstName":"' . $row["firstName"] . '","lastName":"' . $row["lastName"] . '","email":"' . $row["email"] . '"}';
 		}
 
 		if( $searchCount == 0 )
@@ -37,33 +35,32 @@
 		{
 			returnWithInfo( $searchResults );
 		}
-
 		$stmt->close();
-		$conn->close();
-  }
+		$connection->close();
+	}
 
-  function getRequestInfo()
-  {
-    return json_decode(file_get_contents('php://input'), true);
-  }
+	function getRequestInfo()
+	{
+		return json_decode(file_get_contents('php://input'), true);
+	}
 
-  function sendResultInfoAsJson( $obj )
-  {
-    header('Content-type: application/json');
-    echo $obj;
-  }
+	function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
+	}
 
-  function returnWithError( $err )
-  {
-    $retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
-    sendResultInfoAsJson( $retValue );
-  }
+	function returnWithError( $err )
+	{
+		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
 
-  function returnWithInfo( $searchResults )
-  {
-    $retValue = '{"results":[' . $searchResults . '],"error":""}';
-    sendResultInfoAsJson( $retValue );
-  }
+	function returnWithInfo( $searchResults )
+	{
+		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		sendResultInfoAsJson( $retValue );
+	}
 
 
   ?>
