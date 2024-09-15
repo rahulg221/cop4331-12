@@ -11,9 +11,13 @@ body {
     align-items: center;
     min-height: 100vh;
     background: url('images/colortest.png') no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-.loginDiv {
+/* ================== START LOGIN/REGISTRATION TRANSITION ================== */
+
+.wrapper {
     position: relative;
     width: 450px;
     height: 500px;
@@ -25,23 +29,142 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    transition: height .2s ease;
 }
 
-.registerDiv {
-    position: relative;
-    width: 550px;
+.wrapper.active {
     height: 800px;
-    background: transparent;
-    border: 2px solid rgba(255,255,255,.5);
-    border-radius: 20px;
-    backdrop-filter: blur(50px);
-    box-shadow: 0 0 30px rgba(0,0,0,.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.editDiv {
+.wrapper .box {
+    width: 100%;
+    padding: 50px;
+}
+
+.wrapper .box.login {
+    transition: transform .18s ease;
+}
+
+.wrapper.active .box.login {
+    transition: none;
+    transform: translateX(-500px);
+}   
+
+.wrapper .box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(500px);
+}
+
+.wrapper.active .box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+/* ================== END LOGIN/REGISTRATION TRANSITION ================== */
+
+.box h2 {
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* ================== START INPUT BOX STYLING ================== */
+
+.inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 45px;
+    border-bottom: 2px solid white;
+}
+
+.inputBox label {
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    font-size: .9em;
+    color: white;
+    font-weight: 600;
+    pointer-events: none;
+    transition: .7s;
+}
+
+.inputBox input:focus~label, .inputBox input:valid~label {
+    top: -5px; 
+}
+
+.inputBox input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: white;
+    font-weight: 250;
+    padding: 0 35px 0 5px;
+}
+
+.inputBox .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.3em;
+    color: white;
+    line-height: 57px;
+}
+
+/* ================== END INPUT BOX STYLING ================== */
+
+/* ================== START BUTTON STYLING ================== */
+
+.button {
+    width: 100%;
+    height: 45px;
+    background: rgb(25, 25, 34);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.button:hover {
+    opacity: .7;
+}
+
+/* ================== END BUTTON STYLING ================== */
+
+/* ================== START LOGIN/REGISTRATION PROMPT STYLING ================== */
+
+.loginRegister {
+    font-size: .9em;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    margin: 15px 0 10px;
+}
+
+.loginRegister p a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginRegister p a:hover{
+    text-decoration: underline;
+}
+
+/* ================== END LOGIN/REGISTRATION PROMPT STYLING ================== */
+
+/* .editDiv {
     position: relative;
     width: 470px;
     height: 650px;
@@ -67,89 +190,4 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.loginDiv .loginBox, .registerDiv .registerBox, .editDiv .editBox, .newDiv .newBox {
-    width: 100%;
-    padding: 50px;
-}
-
-.loginBox h2, .registerBox h2, .editDiv h2, .newDiv h2 {
-    font-size: 2em;
-    color: white;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.inputBox {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin-bottom: 45px;
-    border-bottom: 2px solid white;
-}
-
-.inputBox label {
-    position: absolute;
-    top: 50%;
-    left: 1px;
-    transform: translateY(-50%);
-    font-size: .9em;
-    color: white;
-    font-weight: 600;
-    pointer-events: none;
-    transition: .7s;
-}
-
-.inputBox input:focus~label, .inputBox input:valid~label {
-    top: -5px;
-}
-
-.inputBox input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    color: white;
-    font-weight: 250;
-    padding: 0 35px 0 5px;
-}
-
-.button {
-    width: 100%;
-    height: 45px;
-    background: rgb(25, 25, 34);
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    color: white;
-    font-weight: 500;
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
-
-.button:hover {
-    opacity: .7;
-}
-
-.registerPrompt, .loginPrompt {
-    font-size: .9em;
-    color: white;
-    text-align: center;
-    font-weight: 500;
-    margin: 15px 0 10px;
-}
-
-.registerPrompt p a, .loginPrompt p a{
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.registerPrompt p a:hover, .loginPrompt p a:hover {
-    text-decoration: underline;
-}
+} */

@@ -5,6 +5,7 @@
   $lastName = $inData["lastName"];
   $userName = $inData["userName"];
   $passWord = $inData["passWord"];
+  $email = $inData["email"];
 
 
   $connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
@@ -15,8 +16,8 @@
   }
   else
   {
-    $stmt = $connection->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $firstName, $lastName, $userName, $passWord);
+    $stmt = $connection->prepare("INSERT into Users (FirstName, LastName, Login, Password, Email) VALUES(?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $firstName, $lastName, $userName, $passWord, $email);
 
     if($stmt->execute()){
       echo 'executed';
