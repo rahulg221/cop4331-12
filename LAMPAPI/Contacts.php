@@ -8,6 +8,7 @@
   $lastName = $inData["lastName"];
   $email = $inData["email"];
   $userID = $inData["userID"];
+  $phone = $inData["Phone"];
 
   //          local account with privileges, username and password, database
   $connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
@@ -18,8 +19,8 @@
   }
   else
   {
-    $stmt = $connection->prepare("INSERT into Contacts (firstName, lastName, Email, UserID) VALUES(?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $firstName, $lastName, $email, $userID);
+    $stmt = $connection->prepare("INSERT into Contacts (firstName, lastName, Email, UserID, Phone) VALUES(?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $firstName, $lastName, $email, $userID, $phone);
     $stmt->execute();
     $stmt->close();
     $connection->close();
