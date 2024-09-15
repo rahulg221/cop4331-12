@@ -49,8 +49,8 @@ function doLogin() {
 
 function doRegistration() {
 	userId = 0;
-	firstName = "";
-	lastName = "";
+	//firstName = "";
+	//lastName = "";
 
 	let firstName = document.getElementById("registerFirstName").value;
 	let lastName = document.getElementById("registerLastName").value;
@@ -60,13 +60,13 @@ function doRegistration() {
 
 	document.getElementById("registerResult").innerHTML = "";
 
-	let tmp = {firstName:firstName, lastName:lastName, email:email, username:username, password:password,};
+	let tmp = {firstName:firstName, lastName:lastName, email:email, userName:username, passWord:password};
 	let jsonPayload = JSON.stringify(tmp);
 
-	let url = urlBase + '/Register.' + extension;
+	let url = urlBase + '/AccountCreation.' + extension;
 
 	let xhr = new XMLHttpRequest();
-	xhr.open("POST", url. true);
+	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 	try {
 		xhr.onreadystatechange = function() {
