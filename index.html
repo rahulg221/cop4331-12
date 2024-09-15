@@ -3,32 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Login page of contact manager for COP4331 small project.">
+    <meta name="description" content="Login/registration page of contact manager for COP4331 small project.">
     <link href="styles.css" rel="stylesheet">
-    <script type="text/javascript" src="code.js"></script>
-    <title>Login | COP4331 Small Project</title>
+    <title>Welcome | COP4331 Small Project</title>
 </head>
 <body>
-    <div class="loginDiv">
-        <div class="loginBox">
+    <div class="wrapper">
+        <!-- card/box for login -->
+        <div class="box login">
             <h2>Login</h2>
             <form action="#">
+                <!-- Username box -->
                 <div class="inputBox">
-                    <!-- <span class="icon"></span> -->
-                    <input type="text", id="loginName" required>
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="text", id="loginUsername" required>
                     <label>Username</label>
                 </div>
+                <!-- Password box -->
                 <div class="inputBox">
-                    <!-- <span class="icon"></span> -->
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <input type="password", id="loginPassword" required>
                     <label>Password</label>
                 </div>
-                <button type="submit", class="button", onclick="doLogin();">Login</button>
-                <div class="registerPrompt">
-                    <p>Don't have an account? <a href="register.html" class="registerLink">Register</a></p>
+                <!-- Login button and registration prompt -->
+                <button type="button" id="loginButton" class="button" onclick="doLogin();"> Log In </button>
+                <span id="loginResult"></span>
+                <div class="loginRegister">
+                    <p>Don't have an account? <a href="#" class="registerLink">Register</a></p>
                 </div>
             </form>
         </div>
+        <!-- card/box for registration -->
+        <div class="box register">
+            <h2>Register</h2>
+            <form action="#">
+                <!-- First name box -->
+                <div class="inputBox">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text", id="registerFirstName" required>
+                    <label>First Name</label>
+                </div>
+                <!-- Last name box -->
+                <div class="inputBox">
+                    <span class="icon"><ion-icon name="person-circle-outline"></ion-icon></span>
+                    <input type="text", id="registerLastName" required>
+                    <label>Last Name</label>
+                </div>
+                <!-- Email box -->
+                <div class="inputBox">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email", id="registerEmail" required>
+                    <label>Email</label>
+                </div>
+                <!-- Username box -->
+                <div class="inputBox">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="text", id="registerUsername" required>
+                    <label>Username</label>
+                </div>
+                <!-- Password box -->
+                <div class="inputBox">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password", id="registerPassword" required>
+                    <label>Password</label>
+                </div>
+                <!-- Register button and login prompt -->
+                <button type="button" id="registerButton" class="button" onclick="doRegistration();"> Create Account </button>
+                <span id="registerResult"></span>
+                <div class="loginRegister">
+                    <p>Already have an account? <a href="#" class="loginLink">Log In</a></p>
+                </div>
+            </form>
+        </div>
+        <!-- Icons and javascript file -->
+        <script type="text/javascript" src="code.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </div>
 </body>
 </html>
