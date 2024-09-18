@@ -18,12 +18,20 @@
   {
     $stmt = $connection->prepare("INSERT into Users (FirstName, LastName, Login, Password, Email) VALUES(?, ?, ?, ?, ?)");
     $stmt->bind_param("sssss", $firstName, $lastName, $userName, $passWord, $email);
+    $stmt->execute();
+    $id = mysqli_insert_id($connection);
+    sendResultInfoAsJson('{"id":' . $id . '}');
 
+    /*
     if($stmt->execute()){
-      echo 'executed';
+      echo 'Account created';
+      $id = mysqli_insert_id($connection);
+      echo 'ID retrieved';
+      returnWithInfo('{"id":' . $id . '}');
     } else{
-      echo 'dont work';
+      returnWithError("Cannot create account");
     }
+    */
     
     $stmt->close();
     $connection->close();
