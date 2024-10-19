@@ -1,17 +1,18 @@
 <?php
-	$inData = getRequestInfo();
+    $inData = getRequestInfo();
 
-	$searchResults = "";
-	$searchCount = 0;
+    $searchResults = "";
+    $searchCount = 0;
 
-	$connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
+    $connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
+
 	if ($connection->connect_error)
 	{
 		returnWithError( $connection->connect_error );
 	}
 	else
 	{
-		$stmt = $connection->prepare("select firstName, lastName, email from Contacts where (firstName like ? or lastName like ? or email like ?) and UserID=?");
+		$stmt = $connection->prepare("SELECT firstName, lastName, Email from Contacts where (firstName like ? or lastName like ? or Email like ?) and UserID=?");
 		$contactName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ssss", $contactName, $contactName, $contactName, $inData["userId"]);
 		$stmt->execute();
@@ -21,10 +22,10 @@
 		{
 			if( $searchCount > 0 )
 			{
-				$searchResults .= ",";
+					$searchResults .= ",";
 			}
 			$searchCount++;
-			$searchResults .= '{"firstName":"' . $row["firstName"] . '","lastName":"' . $row["lastName"] . '","email":"' . $row["email"] . '"}';
+			$searchResults .= '{"firstName":"' . $row["firstName"] . '","lastName":"' . $row["lastName"] . '","email":"' . $row["Email"] . '"}';
 		}
 
 		if( $searchCount == 0 )
@@ -61,6 +62,4 @@
 		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-
-
-  ?>
+?>

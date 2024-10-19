@@ -6,21 +6,21 @@
 	$lastName = "";
 
 	$connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
-   	
+
 	if( $connection->connect_error )
 	{
 		returnWithError( $connection->connect_error );
 	}
 	else
 	{
-		$stmt = $connection->prepare("SELECT ID,firstName,lastName FROM Users WHERE Login=? AND Password =?");
+		$stmt = $connection->prepare("SELECT ID,FirstName,LastName FROM Users WHERE Login=? AND Password =?");
 		$stmt->bind_param("ss", $inData["username"], $inData["password"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
 		if( $row = $result->fetch_assoc()  )
 		{
-			returnWithInfo( $row['firstName'], $row['lastName'], $row['ID'] );
+			returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID'] );
 		}
 		else
 		{
@@ -53,5 +53,4 @@
 		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-
 ?>

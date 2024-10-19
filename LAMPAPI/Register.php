@@ -1,10 +1,11 @@
 <?php
-    $inData = getRequestInfo();
+	$inData = getRequestInfo();
 
-    $firstName = $inData["firstName"];
+	$firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
+    $userName = $inData["username"];
+    $passWord = $inData["password"];
     $email = $inData["email"];
-    $userId = $inData["userId"];
 
     $connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
 
@@ -14,23 +15,25 @@
     }
     else
     {
-        $stmt = $connection->prepare("DELETE FROM Contacts WHERE firstName=? AND lastName=? AND email=? AND UserID=?");
-        $stmt->bind_param("ssss", $firstName, $lastName, $email, $userId);
+        $stmt = $connection->prepare("INSERT into Users (FirstName, LastName, Login, Password, Email) VALUES(?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $firstName, $lastName, $userName, $passWord, $email);
         $stmt->execute();
+        $id = mysqli_insert_id($connection);
+        sendResultInfoAsJson('{"id":' . $id . '}');
+
         $stmt->close();
         $connection->close();
-        returnWithError("");
-    }
-
-    function getRequestInfo()
-    {
-        return json_decode(file_get_contents('php://input'), true);
     }
 
     function sendResultInfoAsJson($obj)
     {
         header('Content-type: application/json');
         echo $obj;
+    }
+
+    function getRequestInfo()
+    {
+        return json_decode(file_get_contents('php://input'), true);
     }
 
     function returnWithError($err)

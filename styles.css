@@ -10,12 +10,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('images/colortest.png') no-repeat;
+    background: url('colortest.png') no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-/* ================== START LOGIN/REGISTRATION TRANSITION ================== */
+/* ================== LOGIN/REGISTRATION TRANSITION ================== */
 
 .wrapper {
     position: relative;
@@ -49,7 +49,7 @@ body {
 .wrapper.active .box.login {
     transition: none;
     transform: translateX(-500px);
-}   
+}
 
 .wrapper .box.register {
     position: absolute;
@@ -62,8 +62,6 @@ body {
     transform: translateX(0);
 }
 
-/* ================== END LOGIN/REGISTRATION TRANSITION ================== */
-
 .box h2 {
     font-size: 2em;
     color: white;
@@ -71,7 +69,7 @@ body {
     margin-bottom: 50px;
 }
 
-/* ================== START INPUT BOX STYLING ================== */
+/* ================== INPUT BOX STYLING ================== */
 
 .inputBox {
     position: relative;
@@ -94,7 +92,7 @@ body {
 }
 
 .inputBox input:focus~label, .inputBox input:valid~label {
-    top: -5px; 
+    top: -5px;
 }
 
 .inputBox input {
@@ -117,9 +115,7 @@ body {
     line-height: 57px;
 }
 
-/* ================== END INPUT BOX STYLING ================== */
-
-/* ================== START BUTTON STYLING ================== */
+/* ================== BUTTON STYLING ================== */
 
 .button {
     width: 100%;
@@ -140,9 +136,7 @@ body {
     opacity: .7;
 }
 
-/* ================== END BUTTON STYLING ================== */
-
-/* ================== START LOGIN/REGISTRATION PROMPT STYLING ================== */
+/* ================== LOGIN/REGISTRATION PROMPT STYLING ================== */
 
 .loginRegister {
     font-size: .9em;
@@ -162,32 +156,360 @@ body {
     text-decoration: underline;
 }
 
-/* ================== END LOGIN/REGISTRATION PROMPT STYLING ================== */
+/* ================== NAVBAR STYLING ================== */
 
-/* .editDiv {
-    position: relative;
-    width: 470px;
-    height: 650px;
+.navigation {
+    position: fixed;
+    z-index: 1;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    padding: 25px 100px;
     background: transparent;
-    border: 2px solid rgba(255,255,255,.5);
-    border-radius: 20px;
     backdrop-filter: blur(50px);
+    border: 2px solid rgba(255,255,255,.5);
     box-shadow: 0 0 30px rgba(0,0,0,.5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation h2 {
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+}
+
+.navbar a {
+    display: incline-block;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 25px;
+}
+
+.navbar a:hover {
+    opacity: .7;
+}
+
+/* ================== CONTACT SEARCH BAR STYLING ================== */
+
+.search {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.newDiv {
+.searchBox {
+    margin-top: 120px;
+    height: 50px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 30px;
+    border: 2px solid rgba(255,255,255,.5);
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0,0,0,.5);
+}
+
+.searchBox:hover input {
+    width: 300px;
+}
+
+.searchBox input {
+    width: 0;
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: 500;
+    transition: .8s;
+    background: transparent;
+}
+
+.searchBox a .icon {
+    color: white;
+    font-size: 18px;
+}
+
+#searchContacts::placeholder {
+    color: white;
+    opacity: .8;
+}
+
+/* ================== CONTACT LIST STYLING ================== */
+
+.contacts {
+    width: 800px;
+    background: transparent;
+    backdrop-filter: blur(50px);
+    padding: 15px;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,.5);
+    margin-top: 43px;
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    height: 700px;
+    align-items: center;
+}
+
+.contactsContent {
+    width: 770px;
+    padding: 10px;
+    height: 650px;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.contactsContent::-webkit-scrollbar {
+    scroll-margin-bottom: 25px;
+    width: 15px;
+}
+
+.contactsContent::-webkit-scrollbar-thumb {
+    background: rgb(25, 25, 34);
+    border-radius: 20px;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    padding-left: 20px;
+    margin: 30px 0;
+    width: 95%;
+    margin-inline: auto;
+}
+
+.add input {
+    color: white;
+    font-size: 17px;
+    width: 100%;
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+    border-bottom: 1px solid white;
+}
+
+.add input::placeholder {
+    color: white;
+}
+
+.add button {
+    border: none;
+    outline: none;
+    padding: 12px 30px;
+    background: rgb(25, 25, 34);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: .2s ease-in-out;
+}
+
+.add button:hover {
+    opacity: .7;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+ul li {
+    color: white;
+    font-weight: 700;
+    list-style: none;
+    font-size: 15px;
+    padding: 10px 30px;
+    user-select: none;
+    width: 80%;
+    min-height: 50px;
+    margin: 0 auto;
+    border-radius: 5rem;
+    cursor: default;
     position: relative;
-    width: 470px;
-    height: 585px;
+    background: rgba(255,255,255,.05);
+    display: flex;
+    align-items: center;
+    transition: .2s ease-in-out;
+    opacity: .7;
+    border: 2px solid rgba(255,255,255,.5);
+}
+
+ul li:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+ul li span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+}
+
+ul li span:hover {
+    border-radius: 30px;
+    background: red;
+    color: white;
+}
+
+ul li i {
+    pointer-events: none;
+}
+
+/* ================== EDIT MODAL STYLING ================== */
+
+.editPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.editPopupContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 500px;
+    flex-direction: column;
     background: transparent;
     border: 2px solid rgba(255,255,255,.5);
     border-radius: 20px;
     backdrop-filter: blur(50px);
     box-shadow: 0 0 30px rgba(0,0,0,.5);
+    padding: 50px;
+}
+
+.editPopupContent h2 {
+    font-size: 1.8em;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.editPopupContent #deleteContact {
+    width: 100%;
+    height: 45px;
+    background: rgb(133, 43, 43);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.editPopupContent .inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 45px;
+    border-bottom: 2px solid white;
+}
+
+.editPopupContent .inputBox label {
+    position: absolute;
+    top: 50%;
+    left: 1px;
+    transform: translateY(-50%);
+    font-size: .9em;
+    color: white;
+    font-weight: 600;
+    pointer-events: none;
+    transition: .7s;
+}
+
+.editPopupContent .inputBox input:focus~label, .inputBox input:valid~label {
+    top: -5px;
+}
+
+.editPopupContent .inputBox input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: white;
+    font-weight: 250;
+    padding: 0 35px 0 5px;
+}
+
+.editPopupContent .inputBox .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.3em;
+    color: white;
+    line-height: 18px;
+}
+
+/* ================== NEW MODAL STYLING ================== */
+
+.newPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.newPopupContent {
     display: flex;
     justify-content: center;
     align-items: center;
-} */
+    width: 450px;
+    height: 500px;
+    flex-direction: column;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(50px);
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    padding: 50px;
+}
+
+.newPopupContent h2 {
+    font-size: 1.8em;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.newPopupContent .inputBox .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.3em;
+    color: white;
+    line-height: 38px;
+}

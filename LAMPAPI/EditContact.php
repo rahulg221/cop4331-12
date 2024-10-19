@@ -1,7 +1,5 @@
 <?php
-    echo 'Hello world';
-
-	$inData = getRequestInfo();
+    $inData = getRequestInfo();
     $results = "";
 
     $newFirstName = $inData["newFirstName"];
@@ -11,42 +9,43 @@
     $firstName = $inData["firstName"];
     $lastName = $inData["lastName"];
     $email = $inData["email"];
-    $userid = $inData["userID"];
+    $userId = $inData["userId"];
 
-	$connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
-	if ($connection->connect_error)
-	{
-		returnWithError( $connection->connect_error );
-	}
-	else
-	{
-		$stmt = $connection->prepare("UPDATE Contacts SET firstName=?, lastName=?, Email=? WHERE firstName=? AND lastName=? AND Email=? AND UserID=?");
-		$stmt->bind_param("sssssss", $newFirstName, $newLastName, $newEmail, $firstName, $lastName, $email, $userid);
-		$stmt->execute();
-		$stmt->close();
-		$connection->close();
-	}
+    $connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
 
-	function getRequestInfo()
-	{
-		return json_decode(file_get_contents('php://input'), true);
-	}
+    if ($connection->connect_error)
+    {
+        returnWithError( $connection->connect_error );
+    }
+    else
+    {
+        $stmt = $connection->prepare("UPDATE Contacts SET firstName=?, lastName=?, Email=? WHERE firstName=? AND lastName=? AND Email=? AND UserID=?");
+        $stmt->bind_param("sssssss", $newFirstName, $newLastName, $newEmail, $firstName, $lastName, $email, $userId);
+        $stmt->execute();
+        $stmt->close();
+        $connection->close();
+    }
 
-	function sendResultInfoAsJson( $obj )
-	{
-		header('Content-type: application/json');
-		echo $obj;
-	}
+    function getRequestInfo()
+    {
+        return json_decode(file_get_contents('php://input'), true);
+    }
 
-	function returnWithError( $err )
-	{
-        $retValue = '{"firstName":"","lastName":"","email":"","userID":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
-	}
+    function sendResultInfoAsJson( $obj )
+    {
+        header('Content-type: application/json');
+        echo $obj;
+    }
 
-	function returnWithInfo( $searchResults )
-	{
-        $retValue = $searchResults;
-		sendResultInfoAsJson( $retValue );
-	}
-  ?>
+    function returnWithError( $err )
+    {
+    	$retValue = '{"firstName":"","lastName":"","email":"","userID":"","error":"' . $err . '"}';
+        sendResultInfoAsJson( $retValue );
+    }
+
+    function returnWithInfo( $searchResults )
+    {
+    	$retValue = $searchResults;
+        sendResultInfoAsJson( $retValue );
+    }
+?>

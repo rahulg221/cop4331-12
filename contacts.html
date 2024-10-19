@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact list page of contact manager for COP4331 small project.">
+    <link href="css/styles.css" rel="stylesheet">
+    <title>Contacts | COP4331 Small Project</title>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() 
+        {
+            readCookie();
+            fetchContacts();
+        }, false);
+    </script>
+</head>
+<body>
+    <div class="wrapperContacts">
+        <!-- Navigation bar -->
+        <header class="navigation">
+            <h2>Contact Manager</h2>
+            <nav class="navbar">
+                <a href="#" onclick="doLogout();">Log Out</a>
+            </nav>
+        </header>
+        <!-- Search bar -->
+        <div class="search">
+            <form action="#">
+                <div class="searchBox">
+                    <input type="text", id="searchContacts", placeholder="Search contacts...">
+                    <a href="#" id="search"><span class="icon"><i class="iconoir-search"></i></span></a>
+                </div>
+            </form>
+            <!-- <span id="searchResult"></span> -->
+        </div>
+        <!-- Contact list -->
+        <div class="contacts">
+            <div class="contactsContent">
+                <div class="add">
+                    <!-- <input type="text", id="addInputBox", placeholder="New contact"> -->
+                    <button type="button" id="addButton">New Contact</button>
+                </div>
+                <ul class="list", id="list">
+                    <!-- <li class="edit">John Doe (johndoe@gmail.com)
+                        <span class="icon", onclick="openEditPopup('User 1')"><i class="iconoir-edit-pencil"></i></span>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <!-- Edit/delete modal -->
+        <div class="editPopup", id="editPopup">
+            <div class="editPopupContent">
+                <h2>Edit Contact</h2>
+                <div class="inputBox">
+                    <span class="icon"><i class="iconoir-people-tag"></i></span>
+                    <input type="text", id="editFirstName" required>
+                    <label>First Name</label>
+                </div>
+                <div class="inputBox">
+                    <span class="icon"><i class="iconoir-people-tag"></i></span>
+                    <input type="text", id="editLastName" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="inputBox">
+                    <span class="icon"><i class="iconoir-mail"></i></span>
+                    <input type="email", id="editEmail" required>
+                    <label>Email</label>
+                </div>
+                <button id="saveContact", class="button">Save</button>
+                <button id="deleteContact", class="button">Delete</button>
+            </div>
+            <!-- <span id="contactEditResult"></span> -->
+            <!-- <span id="contactDeleteResult"></span> -->
+        </div>
+        <!-- Create modal -->
+        <div class="newPopup", id="newPopup">
+            <div class="newPopupContent">
+                <h2>New Contact</h2>
+                <div class="inputBox">
+                    <span class="icon"><i class="iconoir-people-tag"></i></span>
+                    <input type="text", id="newContactFirst" required>
+                    <label>First Name</label>
+                </div>
+                <div class="inputBox">
+                    <span class="icon"><i class="iconoir-people-tag"></i></span>
+                    <input type="text", id="newContactLast" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="inputBox">
+                    <span class="icon"><i class="iconoir-mail"></i></span>
+                    <input type="email", id="newContactEmail" required>
+                    <label>Email</label>
+                </div>
+                <button id="createButton", class="button", onclick="newContact()">Create</button>
+            </div>
+            <!-- <span id="contactAddResult"></span> -->
+        </div>
+        <!-- Icons and javascript file -->
+        <script type="text/javascript" src="js/code.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"/>
+    </div>
+</body>
+</html>
