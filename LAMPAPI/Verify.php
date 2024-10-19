@@ -5,10 +5,9 @@
 	$userName = $inData["userName"];
 
 	$connection = new mysqli("localhost", "Admin", "AdminPassWord", "SmallProject");
-
 	if ($connection->connect_error)
 	{
-			returnWithError( $connection->connect_error );
+		returnWithError( $connection->connect_error );
 	}
 	else
 	{
@@ -19,7 +18,7 @@
 
 		while($row = $result->fetch_assoc())
 		{
-				$searchCount++;
+			$searchCount++;
 		}
 
 		//returns count of usernames that match input
@@ -31,6 +30,7 @@
 
 	function getRequestInfo()
 	{
-			return json_decode(file_get_contents('php://input'), true);
+		return json_decode(file_get_contents('php://input'), true);
 	}
-?>
+
+  ?>
